@@ -121,7 +121,6 @@ if (process.env.DELAY) {
  * Define your routes here (now that middlewares are configured)
  */
 app.use("/users", userRouter);
-app.use("/artwork", artworkRouter);
 
 // GET endpoint for testing purposes, can be removed
 app.get("/", (req, res) => {
