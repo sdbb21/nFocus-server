@@ -10,7 +10,7 @@ router.get("/", async (req, res, next) => {
     const get10Scores = await ScoreList.findAll({
       include: [{ model: User, attributes: ["name"] }],
       order: [["score", "DESC"]],
-      limit: 2,
+      limit: 10,
     });
 
     res.json(get10Scores);
