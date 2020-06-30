@@ -55,12 +55,11 @@ router.delete("/:userId", authMiddleware, async (req, res, next) => {
   }
 });
 
-// Add SCORE to User
+// Add SCORE to scoreList with userId
 router.post("/:userId/score", authMiddleware, async (req, res) => {
   const { score, userId } = req.body;
-  console.log({ score, userId });
   if (!userId) {
-    return res.status(400).send("Missing an name or a userId");
+    return res.status(400).send("Missing a userId");
   }
 
   try {
@@ -73,13 +72,7 @@ router.post("/:userId/score", authMiddleware, async (req, res) => {
       newScore,
     });
   } catch (error) {
-    if (error.name === "SequelizeUniqueConstraintError") {
-      return res
-        .status(400)
-        .send({ message: "There is an existing account with this email" });
-    }
-
-    return res.status(400).send({ message: "Something went wrong, sorry" });
+    next(e);
   }
 });
 
