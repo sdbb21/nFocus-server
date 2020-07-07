@@ -5,7 +5,7 @@ const corsMiddleWare = require("cors");
 const { PORT } = require("./config/constants");
 const authRouter = require("./routers/auth");
 const userRouter = require("./routers/user");
-const highScoreRouter = require("./routers/scorelist");
+const scorelistRouter = require("./routers/scorelist");
 
 const authMiddleWare = require("./auth/middleware");
 
@@ -123,7 +123,7 @@ if (process.env.DELAY) {
  * Define your routes here (now that middlewares are configured)
  */
 app.use("/users", userRouter);
-app.use("/highscores", highScoreRouter);
+app.use("/scores", scorelistRouter);
 
 // GET endpoint for testing purposes, can be removed
 app.get("/", (req, res) => {
