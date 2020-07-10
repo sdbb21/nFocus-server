@@ -11,7 +11,9 @@ const db = {};
 let sequelize;
 console.log("CONFIG IS:", config);
 if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
+  const test = process.env[config.use_env_variable];
+  console.log("TEST IS:", test);
+  sequelize = new Sequelize(test, config);
 } else {
   sequelize = new Sequelize(config.url, config);
 }
